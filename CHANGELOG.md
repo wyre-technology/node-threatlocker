@@ -1,3 +1,10 @@
+# 1.0.0 (2026-05-01)
+
+
+### Features
+
+* initial SDK scaffold for ThreatLocker Portal API ([a928463](https://github.com/wyre-technology/node-threatlocker/commit/a928463044ebe7a41cb8d824aaaa2b3aa9aa40a8))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
