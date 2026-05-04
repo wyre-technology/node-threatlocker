@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.0...v1.0.1) (2026-05-04)
+
+
+### Bug Fixes
+
+* **add-to-project:** call shared reusable workflow ([#2](https://github.com/wyre-technology/node-threatlocker/issues/2)) ([309407e](https://github.com/wyre-technology/node-threatlocker/commit/309407ea8f600f270cad1a8703ad3f64f7ee84b0))
+
 # 1.0.0 (2026-05-01)
 
 
