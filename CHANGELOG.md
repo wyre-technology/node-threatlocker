@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.1...v1.0.2) (2026-05-18)
+
+
+### Bug Fixes
+
+* include dist/ in published npm package ([#3](https://github.com/wyre-technology/node-threatlocker/issues/3)) ([4cb4f24](https://github.com/wyre-technology/node-threatlocker/commit/4cb4f247fe1a5a19e81732cbc20db148d6a1a197))
+
 ## [1.0.1](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.0...v1.0.1) (2026-05-04)
 
 
