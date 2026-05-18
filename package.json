@@ -1,11 +1,14 @@
 {
   "name": "@wyre-technology/node-threatlocker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js client library for the ThreatLocker Portal API",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -27,7 +30,8 @@
     "test:coverage": "vitest run --coverage",
     "lint": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "threatlocker",

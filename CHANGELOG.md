@@ -21,6 +21,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Published npm tarball was missing compiled `dist/` output, causing
+  `ERR_MODULE_NOT_FOUND` in consumers. Added an explicit `files` field
+  (`["dist"]`) so packaging no longer falls back to `.gitignore` (which
+  excludes `dist/`), and added a `prepublishOnly` build step so the
+  compiled output is always present in published packages.
+
 ### Added
 
 - Initial SDK scaffold for ThreatLocker Portal API
