@@ -1,3 +1,11 @@
+## [1.0.3](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.2...v1.0.3) (2026-07-22)
+
+
+### Bug Fixes
+
+* **build:** ignoreDeprecations for TS7 DTS build breakage (already on ^6.0.3) ([#19](https://github.com/wyre-technology/node-threatlocker/issues/19)) ([4a21b9a](https://github.com/wyre-technology/node-threatlocker/commit/4a21b9ab710a775057bbd660f39ba141ab24260c))
+* **security:** SHA-pin auto-add-to-project.yml [@main](https://github.com/main) -> [@6ae1533dd72f](https://github.com/6ae1533dd72f) (warden C-4) ([#13](https://github.com/wyre-technology/node-threatlocker/issues/13)) ([1f61326](https://github.com/wyre-technology/node-threatlocker/commit/1f6132636a5862fff45dd231c653036469662036))
+
 ## [1.0.2](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.1...v1.0.2) (2026-05-18)
 
 
