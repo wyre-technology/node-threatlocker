@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.3...v1.0.4) (2026-08-10)
+
+
+### Bug Fixes
+
+* honor real portalapi contracts — bare-array lists, statusId, audit dates, bare count ([#21](https://github.com/wyre-technology/node-threatlocker/issues/21)) ([ca407d3](https://github.com/wyre-technology/node-threatlocker/commit/ca407d3d3f9a87329ae4084ffa8efc30bbfe28fc)), closes [threatlocker-mcp#43](https://github.com/threatlocker-mcp/issues/43)
+
 ## [1.0.3](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.2...v1.0.3) (2026-07-22)
 
 
