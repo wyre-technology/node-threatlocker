@@ -8,11 +8,11 @@ export class ComputersResource {
 
   async list(params: ComputerListParams = {}): Promise<PaginatedResponse<Computer>> {
     const body = buildSearchBody(params);
-    const response = await this.http.request<any>('/Computer/ComputerGetByAllParameters', {
+    const { data, pagination } = await this.http.requestWithMeta<any>('/Computer/ComputerGetByAllParameters', {
       method: 'POST',
       body,
     });
-    return unwrapPaginatedResponse<Computer>(response, body.pageNumber, body.pageSize);
+    return unwrapPaginatedResponse<Computer>(data, body.pageNumber, body.pageSize, pagination);
   }
 
   async get(id: number): Promise<Computer> {
@@ -23,10 +23,10 @@ export class ComputersResource {
 
   async getCheckins(params: ComputerCheckinParams = {}): Promise<PaginatedResponse<ComputerCheckin>> {
     const body = buildSearchBody(params);
-    const response = await this.http.request<any>('/ComputerCheckin/ComputerCheckinGetByParameters', {
+    const { data, pagination } = await this.http.requestWithMeta<any>('/ComputerCheckin/ComputerCheckinGetByParameters', {
       method: 'POST',
       body,
     });
-    return unwrapPaginatedResponse<ComputerCheckin>(response, body.pageNumber, body.pageSize);
+    return unwrapPaginatedResponse<ComputerCheckin>(data, body.pageNumber, body.pageSize, pagination);
   }
 }

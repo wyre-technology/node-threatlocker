@@ -7,12 +7,15 @@ export class OrganizationsResource {
   constructor(private readonly http: HttpClient) {}
 
   async listChildren(params: OrganizationListParams = {}): Promise<PaginatedResponse<Organization>> {
-    const body = buildSearchBody(params);
-    const response = await this.http.request<any>('/Organization/OrganizationGetChildOrganizationsByParameters', {
+    // childOrganizations must be true or the endpoint returns an empty list
+    // even for MSPs with children (live-verified) — listing children is the
+    // whole point of this method, so default it on.
+    const body = buildSearchBody({ childOrganizations: true, ...params });
+    const { data, pagination } = await this.http.requestWithMeta<any>('/Organization/OrganizationGetChildOrganizationsByParameters', {
       method: 'POST',
       body,
     });
-    return unwrapPaginatedResponse<Organization>(response, body.pageNumber, body.pageSize);
+    return unwrapPaginatedResponse<Organization>(data, body.pageNumber, body.pageSize, pagination);
   }
 
   async getAuthKey(): Promise<AuthKey> {

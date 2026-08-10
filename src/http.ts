@@ -21,6 +21,16 @@ export interface RequestOptions {
   method?: string;
   params?: Record<string, unknown>;
   body?: unknown;
+  /** Extra request headers (e.g. ActionLog V2 requires `usenewsearch: true`). */
+  headers?: Record<string, string>;
+}
+
+/** Shape of the `pagination` response header portalapi sets on list endpoints. */
+export interface PaginationMeta {
+  currentPage?: number;
+  itemsPerPage?: number;
+  totalItems?: number;
+  totalPages?: number;
 }
 
 export class HttpClient {
@@ -39,6 +49,16 @@ export class HttpClient {
   }
 
   async request<T>(path: string, options: RequestOptions = {}): Promise<T> {
+    const { data } = await this.requestWithMeta<T>(path, options);
+    return data;
+  }
+
+  /**
+   * Like request(), but also surfaces the `pagination` response header —
+   * portalapi list endpoints return a bare JSON array and put the totals
+   * there, not in the body.
+   */
+  async requestWithMeta<T>(path: string, options: RequestOptions = {}): Promise<{ data: T; pagination?: PaginationMeta }> {
     const { method = 'GET', params, body } = options;
 
     let url = `${this.baseUrl}${path}`;
@@ -71,6 +91,7 @@ export class HttpClient {
       const headers: Record<string, string> = {
         'Authorization': this.apiKey, // Raw API key, no Bearer prefix
         'Accept': 'application/json',
+        ...options.headers,
       };
 
       // Add organization header if provided
@@ -93,10 +114,17 @@ export class HttpClient {
       }
 
       if (response.ok) {
-        if (response.status === 204) return {} as T;
+        let pagination: PaginationMeta | undefined;
+        const paginationHeader = response.headers.get('pagination');
+        if (paginationHeader) {
+          try { pagination = JSON.parse(paginationHeader) as PaginationMeta; } catch { /* malformed header — ignore */ }
+        }
+        if (response.status === 204) return { data: {} as T, pagination };
         const contentType = response.headers.get('content-type');
-        if (contentType?.includes('application/json')) return response.json() as Promise<T>;
-        return {} as T;
+        if (contentType?.includes('application/json')) {
+          return { data: (await response.json()) as T, pagination };
+        }
+        return { data: {} as T, pagination };
       }
 
       // Read body safely (text first, then parse)
