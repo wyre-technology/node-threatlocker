@@ -66,6 +66,11 @@ export interface ApprovalRequest {
 }
 
 export interface ApprovalRequestListParams extends Partial<PaginationParams> {
+  /**
+   * Status name, mapped to the API's required statusId. Valid: Pending
+   * (default), Approved, Rejected, Not Learned, Added to Application,
+   * Escalated, Self-Approved.
+   */
   status?: string;
   computerId?: number;
 }
@@ -90,8 +95,13 @@ export interface AuditLogEntry {
 
 export interface AuditLogSearchParams extends Partial<PaginationParams> {
   actionType?: string;
+  /** Range start (ISO 8601). Defaults to 24h before endDate. Alias: fromDate. */
+  startDate?: string | Date;
+  /** Range end (ISO 8601). Defaults to now. Alias: toDate. */
+  endDate?: string | Date;
   fromDate?: string;
   toDate?: string;
+  hostname?: string;
   userId?: number;
   computerId?: number;
 }
