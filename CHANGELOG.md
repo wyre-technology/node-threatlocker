@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.4...v1.0.5) (2026-08-13)
+
+
+### Bug Fixes
+
+* **ci:** bump add-to-project reusable-workflow pin to post-[#44](https://github.com/wyre-technology/node-threatlocker/issues/44) SHA ([#24](https://github.com/wyre-technology/node-threatlocker/issues/24)) ([41f4741](https://github.com/wyre-technology/node-threatlocker/commit/41f47412a442e6aa7dd070765dbc86ab49a96d1f))
+
 ## [1.0.4](https://github.com/wyre-technology/node-threatlocker/compare/v1.0.3...v1.0.4) (2026-08-10)
 
 
